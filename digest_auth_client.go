@@ -91,6 +91,8 @@ func (dt *DigestTransport) RoundTrip(req *http.Request) (resp *http.Response, er
 		dr.HTTPClient = dt.HTTPClient
 	}
 
+	dr.Header.Set("Content-Type", req.Header.Get("Content-Type"))
+
 	return dr.Execute()
 }
 
